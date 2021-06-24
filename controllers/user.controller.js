@@ -1,8 +1,15 @@
+const bcrypt = require('bcryptjs');
+
+const UserMock = require('../models/user');
+
 const register = async (req, res) => {
+  const { password } = req.body;
   try {
-    return;
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = await UserMock.create({ ...req.body, password: hashedPassword });
+    return res.status(201).json(user);
   } catch (error) {
-    console.error(error);
+    return res.status(400).json({ error });
   }
 };
 

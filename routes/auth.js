@@ -2,7 +2,7 @@ const express = require('express');
 
 const { validateInput } = require('../utils/login.validate');
 
-const userController = require('../controllers/auth.controller');
+const userController = require('../controllers/user.controller');
 
 const router = express.Router();
 

@@ -1,4 +1,7 @@
+const config = require('config');
 const bcrypt = require('bcryptjs');
+
+const jwt = require ('jsonwebtoken');
 
 const models = require('../models');
 
@@ -24,11 +27,16 @@ const login = async (req, res) => {
     if (emailExists) {
       const passwordValidate =  bcrypt.compareSync(req.body.password, password);
       if(!passwordValidate) res.status(400).json({ok: false, msj:'User or password incorrect'});
-      const user = await models.User.findOne({ password: passwordValidate });
-      res.json(user);
-    }else {
-        res.status(400).json({ok: false, msj:'User or password incorrect'});
+      const jwToken = jwt.sign({data: req.body},config.get("configToken.SEED"), { expiresIn: config.get("configToken.expiration")});
+      res.json({
+        user: {
+          email: email,
+          password: password
+        },
+        jwToken
+      });
     }
+    res.status(400).json({ok: false, msj:'User or password incorrect'});
   } catch (error) {
     return res.status(400).json({ ok: false, error });
   }

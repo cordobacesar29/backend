@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 
 const models = require('../models');
 
+
 const register = async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -17,4 +18,23 @@ const register = async (req, res) => {
   }
 };
 
-module.exports = { register };
+const userData = async (req, res) => {
+  const userId = req.decoded
+  // Getting user by id
+  try {
+    const userData = await models.User.findByPk(userId);
+    if (userData === null) {
+      res.status(404).json({
+        ok: false,
+        msg: "User id does not exist",
+      });
+    } else {
+      res.json(userData);
+    }
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+
+}
+
+module.exports = { register, userData };

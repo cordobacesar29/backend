@@ -28,11 +28,8 @@ const login = async (req, res) => {
       const passwordValidate =  bcrypt.compareSync(req.body.password, password);
       if(!passwordValidate) res.status(400).json({ok: false, msj:'User or password incorrect'});
       const jwToken = jwt.sign({data: req.body},config.get("configToken.SEED"), { expiresIn: config.get("configToken.expiration")});
-      res.json({
-        user: {
-          email: email,
-          password: password
-        },
+      res.status(200).json({
+        message: "user authenticated",
         jwToken
       });
     }

@@ -17,4 +17,20 @@ const register = async (req, res) => {
   }
 };
 
-module.exports = { register };
+const deleteUser = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const user = await models.User.findByPk(id);
+    if (!user) {
+      return res.status(400).json({ error: 'User to delete does not exist' });
+    }
+    const deleteUser = await models.User.destroy({
+      where: {id: id}
+    })
+    return res.status(201).json(deleteUser);
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+};
+
+module.exports = { register, deleteUser };

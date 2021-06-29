@@ -11,6 +11,4 @@ router.post('/auth/register', validateInput, userController.register);
 
 router.post('/auth/login', validateInput, userController.login);
 
-router.get('/', checkToken, userController.auth);
-
 module.exports = router;

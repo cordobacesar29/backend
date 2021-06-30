@@ -1,6 +1,6 @@
 const { check, validationResult } = require('express-validator');
 
-exports.validateInput = [
+exports.validateRegisterInput = [
   check('firstName')
     .isString()
     .trim()
@@ -45,4 +45,8 @@ exports.validateInput = [
     }
     next();
   },
+];
+
+exports.validateNewsInput = [
+  // TODO: make validations
 ];

@@ -48,5 +48,49 @@ exports.validateRegisterInput = [
 ];
 
 exports.validateNewsInput = [
-  // TODO: make validations
+  check('name')
+    .not()
+    .isEmpty()
+    .withMessage('name must not be empty')
+    .bail()
+    .isString()
+    .trim()
+    .escape()
+    .bail(),
+  check('content')
+    .not()
+    .isEmpty()
+    .withMessage('content must not be empty')
+    .bail()
+    .isString()
+    .escape()
+    .trim()
+    .bail(),
+  check('image')
+    .not()
+    .isEmpty()
+    .withMessage('image must not be empty')
+    .bail()
+    .isString()
+    .trim()
+    .escape()
+    .bail(),
+  check('categoryId')
+    .not()
+    .isEmpty()
+    .withMessage('categoryId must not be empty')
+    .bail()
+    .isInt()
+    .withMessage('categoryId must be a integer number')
+    .bail(),
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      const errorsArray = errors
+        .array()
+        .map(error => ({ field: error.param, message: error.msg }));
+      return res.status(400).json({ errors: errorsArray });
+    }
+    next();
+  },
 ];

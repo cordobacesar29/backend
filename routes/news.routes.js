@@ -6,6 +6,6 @@ const { validateNewsInput } = require('../utils/validate');
 
 const router = Router();
 
-router.post('/', validateNewsInput, newsController.addOne);
+router.post('/', validateNewsInput, newsController.createEntry);
 
 module.exports = router;

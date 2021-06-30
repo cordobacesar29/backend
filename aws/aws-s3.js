@@ -23,7 +23,7 @@ const s3 = new S3({
  *
  * {
  * ETag: '"b33fb80bf66ca9dda2314ae8be5e59cb"',
- * Location: 'https://alkemy-ong-project.s3.sa-east-1.amazonaws.com/801bbb219be397647a00dcbd84cb8f89',
+ * Location: 'https://alkemy-ong-project.s3.sa-east-1.amazonaws.com/image-1625063620801-dummy.jpeg',
  * key: '801bbb219be397647a00dcbd84cb8f89',
  * Key: '801bbb219be397647a00dcbd84cb8f89',
  * Bucket: 'alkemy-ong-project'

@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Entry.belongsTo(models.Role, { as: 'category' });
+      Entry.belongsTo(models.Category, { as: 'category' });
     }
   };
   Entry.init({
@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Entry',
+    paranoid: true,
   });
   return Entry;
 };

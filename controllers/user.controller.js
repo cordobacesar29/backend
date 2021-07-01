@@ -61,22 +61,27 @@ const userData = async (req, res) => {
 const login = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const emailExists = await models.User.findOne({ where: { email } });
-    if (emailExists) {
-      const passwordValidate =  bcrypt.compareSync(req.body.password, password);
-      if(!passwordValidate) res.status(400).json({ok: false, msj:'User or password incorrect'});
+    const userExists = await models.User.findOne({ where: { email } });
+    if (userExists) {
+
+      const passwordValidate = bcrypt.compareSync(password, userExists.password);
+      if(!passwordValidate) return res.status(400).json({ok: false, msj:'User or password incorrect'});
+
+      const payload = {id: userExists.id};
       const jwToken = jwt.sign(
-        {data: req.body},
+        payload,
         config.get("configToken.SEED"), 
         { expiresIn: config.get("configToken.expiration")}
-        );
-      res.status(200).json({
-        ok: false,
+      );
+  
+      return res.status(200).json({
+        ok: true,
         message: "user authenticated",
-        jwToken
+        token: jwToken
       });
     }
-    res.status(400).json({ok: false, msj:'User or password incorrect'});
+    return res.status(400).json({ok: false, msj:'User or password incorrect'});
+
   } catch (error) {
     return res.status(400).json({ ok: false, error });
   }

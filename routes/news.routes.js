@@ -6,7 +6,9 @@ const { validateNewsInput } = require('../utils/validate');
 
 const router = Router();
 
+router.get('/', newsController.getNewsType);
 router.post('/', validateNewsInput, newsController.createEntry);
+router.get('/:id', newsController.getNewsById);
 router.put('/:id', newsController.updateEntry);
 
 module.exports = router;

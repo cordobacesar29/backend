@@ -20,6 +20,12 @@ module.exports = {
       password: {
         type: Sequelize.STRING,
       },
+      password: {
+        type: Sequelize.STRING,
+      },
+      image: {
+        type: Sequelize.STRING
+      },
       organizationId: {
         type: Sequelize.INTEGER,
         references: {

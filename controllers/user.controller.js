@@ -5,11 +5,8 @@ const jwt = require ('jsonwebtoken');
 
 const models = require('../models');
 
-const jwt = require('jsonwebtoken')
 
 const register = async (req, res, next) => {
-
-const register = async (req, res) => {
   const { email, password } = req.body;
   try {
     const emailExists = await models.User.findOne({ where: { email } });
@@ -19,26 +16,14 @@ const register = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await models.User.create({ ...req.body, password: hashedPassword });
     res.status(201).json(user);
-    next()
+    return next()
   } catch (error) {
     return res.status(400).json({ error });
   }
 };
 
-const loginUser = (req, res) => {
-  const payload = req.body;
-  const token =  jwt.sign(payload, process.env.TOKEN_SECRET, {
-  expiresIn: 1440
-  });
-  res.json({
-    ok: true,
-    mensaje: 'Successful authentication',
-    user: req.body,
-    token: token
-  });   
-};
 
-module.exports = { register, loginUser };
+
 const deleteUser = async (req, res) => {
   const { id } = req.params;
   try {
@@ -56,7 +41,7 @@ const deleteUser = async (req, res) => {
 };
 
 const userData = async (req, res) => {
-  const userId = req.decoded
+  const userId = req.decoded.id
   // Getting user by id
   try {
     const userData = await models.User.findByPk(userId);
@@ -81,8 +66,13 @@ const login = async (req, res) => {
     if (emailExists) {
       const passwordValidate =  bcrypt.compareSync(req.body.password, password);
       if(!passwordValidate) res.status(400).json({ok: false, msj:'User or password incorrect'});
-      const jwToken = jwt.sign({data: req.body},config.get("configToken.SEED"), { expiresIn: config.get("configToken.expiration")});
+      const jwToken = jwt.sign(
+        {data: req.body},
+        config.get("configToken.SEED"), 
+        { expiresIn: config.get("configToken.expiration")}
+        );
       res.status(200).json({
+        ok: false,
         message: "user authenticated",
         jwToken
       });

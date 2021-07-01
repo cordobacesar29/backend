@@ -13,9 +13,8 @@ const register = async (req, res, next) => {
     if (emailExists) {
       return res.status(400).json({ error: 'email already in use' });
     }
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = bcrypt.hash(password, 10);
     const user = await models.User.create({ ...req.body, password: hashedPassword });
-    res.status(201).json(user);
     return next()
   } catch (error) {
     return res.status(400).json({ error });
@@ -58,6 +57,29 @@ const userData = async (req, res) => {
 
 }
 
+const loginAfterRegister = async(req,res) =>{
+  const { email } = req.body;
+  try {  
+    const user = await models.User.findOne({ where: { email } });
+    if (user){
+      const payload = {id: user.id};
+      const jwToken = jwt.sign(
+        payload,
+        config.get("configToken.SEED"), 
+        { expiresIn: config.get("configToken.expiration")}
+      );
+      return res.status(201).json({
+        ok: true,
+        message: "user registered and authenticated",
+        token: jwToken
+      });
+    }
+    return res.status(401).json({ok: false, msj:'Authentication Error'});
+  }catch (error) {
+    return res.status(401).json({ ok: false, error });
+  }
+}
+
 const login = async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -73,7 +95,6 @@ const login = async (req, res) => {
         config.get("configToken.SEED"), 
         { expiresIn: config.get("configToken.expiration")}
       );
-  
       return res.status(200).json({
         ok: true,
         message: "user authenticated",
@@ -91,5 +112,6 @@ module.exports = {
   register,
   login,
   userData,
-  deleteUser
+  deleteUser,
+  loginAfterRegister
  };

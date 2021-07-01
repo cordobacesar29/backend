@@ -2,7 +2,9 @@ const bcrypt = require('bcryptjs');
 
 const models = require('../models');
 
-const register = async (req, res) => {
+const jwt = require('jsonwebtoken')
+
+const register = async (req, res, next) => {
   const { email, password } = req.body;
   try {
     const emailExists = await models.User.findOne({ where: { email } });
@@ -11,10 +13,24 @@ const register = async (req, res) => {
     }
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await models.User.create({ ...req.body, password: hashedPassword });
-    return res.status(201).json(user);
+    res.status(201).json(user);
+    next()
   } catch (error) {
     return res.status(400).json({ error });
   }
 };
 
-module.exports = { register };
+const loginUser = (req, res) => {
+  const payload = req.body;
+  const token =  jwt.sign(payload, process.env.TOKEN_SECRET, {
+  expiresIn: 1440
+  });
+  res.json({
+    ok: true,
+    mensaje: 'Successful authentication',
+    user: req.body,
+    token: token
+  });   
+};
+
+module.exports = { register, loginUser };

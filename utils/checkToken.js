@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const config = require('../config/config')
 
 // Decoding Token 
 exports.checkToken = (req, res, next) => {
@@ -9,20 +10,19 @@ exports.checkToken = (req, res, next) => {
   }
 
   if (token) {
-    jwt.verify(token, process.env.TOKEN_SECRET, (err, decoded) => {
+    jwt.verify(token, config.get('configToken.SEED'), (err, decoded) => {
       if (err) {
         return res.json({
           success: false,
           message: 'Token is not valid'
         });
-      } else {
-        req.decoded = decoded;
-        next();
-      }
+      } 
+      req.decoded = decoded;
+      return next();
     });
   } 
   
-  return res.json({
+  return res.status(401).json({
     success: false,
     message: 'Auth token is not supplied'
   });

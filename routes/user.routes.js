@@ -1,5 +1,5 @@
 const express = require('express');
-const {checkToken} = require('../middlewares/auth');
+const { checkToken } = require('../utils/checkToken');
 const { validateInput } = require('../utils/validate');
 
 const userController = require('../controllers/user.controller');
@@ -10,6 +10,6 @@ router.post('/auth/register', validateInput, userController.register, userContro
 router.post('/auth/login', validateInput, userController.login);
 router.get('/auth/me', checkToken, userController.userData)
 
-router.delete('/users/:id', userController.deleteUser );
+router.delete('/:id', userController.deleteUser );
 
 module.exports = router;

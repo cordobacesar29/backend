@@ -1,4 +1,24 @@
+// get a news entry by ID
 const models = require('../models');
+
+const getNewsById = async (req, res) => {
+	const { id } = req.params.id;
+
+	try {
+		const newsEntry = await models.Entry.findOne({
+			where: { id: id },
+			include: 'category',
+		});
+
+		return res.status(200).json({ message: 'success', newsEntry });
+	} catch (error) {
+		return res.status(401).json({
+			status: 'failed',
+			message: 'no news found with the given ID.',
+		});
+	}
+};
+
 
 // getting all news where type = "news"
 const getNewsType = async (req, res) => {
@@ -36,4 +56,4 @@ const createEntry = async (req, res) => {
     }
   };
 
-module.exports = { getNewsType, createEntry };
+module.exports = { getNewsType, createEntry, getNewsById };

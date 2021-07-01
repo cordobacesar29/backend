@@ -41,7 +41,7 @@ const deleteUser = async (req, res) => {
 };
 
 const userData = async (req, res) => {
-  const userId = req.decoded.id
+  const userId = req.user.id
   // Getting user by id
   try {
     const userData = await models.User.findByPk(userId);
@@ -50,9 +50,8 @@ const userData = async (req, res) => {
         ok: false,
         msg: "User id does not exist",
       });
-    } else {
-      res.json(userData);
-    }
+    } 
+    res.json(userData);
   } catch (error) {
     return res.status(400).json({ error });
   }

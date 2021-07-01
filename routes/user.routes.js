@@ -11,4 +11,6 @@ router.post('/auth/register', validateInput, userController.register);
 router.post('/auth/login', validateInput, userController.login);
 router.get('/auth/me', checkToken, userController.userData)
 
+router.delete('/users/:id', userController.deleteUser );
+
 module.exports = router;

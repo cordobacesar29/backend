@@ -1,4 +1,5 @@
 const express = require('express');
+const {checkToken} = require('../middlewares/auth');
 
 const { validateInput } = require('../utils/validate');
 const { checkToken } = require('../utils/checkToken');

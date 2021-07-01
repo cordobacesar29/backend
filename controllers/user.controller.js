@@ -1,4 +1,7 @@
+const config = require('config');
 const bcrypt = require('bcryptjs');
+
+const jwt = require ('jsonwebtoken');
 
 const models = require('../models');
 
@@ -13,6 +16,22 @@ const register = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await models.User.create({ ...req.body, password: hashedPassword });
     return res.status(201).json(user);
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+};
+
+const deleteUser = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const user = await models.User.findByPk(id);
+    if (!user) {
+      return res.status(400).json({ error: 'User to delete does not exist' });
+    }
+    const deleteUser = await models.User.destroy({
+      where: {id: id}
+    })
+    return res.status(201).json(deleteUser);
   } catch (error) {
     return res.status(400).json({ error });
   }
@@ -44,11 +63,13 @@ const login = async (req, res) => {
     if (emailExists) {
       const passwordValidate =  bcrypt.compareSync(req.body.password, password);
       if(!passwordValidate) res.status(400).json({ok: false, msj:'User or password incorrect'});
-      const user = await models.User.findOne({ password: passwordValidate });
-      res.json(user);
-    }else {
-        res.status(400).json({ok: false, msj:'User or password incorrect'});
+      const jwToken = jwt.sign({data: req.body},config.get("configToken.SEED"), { expiresIn: config.get("configToken.expiration")});
+      res.status(200).json({
+        message: "user authenticated",
+        jwToken
+      });
     }
+    res.status(400).json({ok: false, msj:'User or password incorrect'});
   } catch (error) {
     return res.status(400).json({ ok: false, error });
   }
@@ -57,5 +78,6 @@ const login = async (req, res) => {
 module.exports = { 
   register,
   login,
-  userData
+  userData,
+  deleteUser
  };

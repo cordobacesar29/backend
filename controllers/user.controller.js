@@ -21,6 +21,15 @@ const register = async (req, res) => {
   }
 };
 
+const getUsers = async( req, res) => {
+  try {
+    const data = await models.User.findAll();
+    return res.status(200).json(data);
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+}
+
 const deleteUser = async (req, res) => {
   const { id } = req.params;
   try {
@@ -79,5 +88,6 @@ module.exports = {
   register,
   login,
   userData,
-  deleteUser
+  deleteUser,
+  getUsers
  };

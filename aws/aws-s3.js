@@ -18,26 +18,27 @@ const s3 = new S3({
 /**
  *
  * @param {*} file file data provided by multer in req.file
+ * @param {string} folderName string path of the folder where image will be uploaded
  * @returns a promise with object data uploaded to aws
  * @example object data returned
  *
  * {
  * ETag: '"b33fb80bf66ca9dda2314ae8be5e59cb"',
- * Location: 'https://alkemy-ong-project.s3.sa-east-1.amazonaws.com/image-1625063620801-dummy.jpeg',
- * key: '801bbb219be397647a00dcbd84cb8f89',
- * Key: '801bbb219be397647a00dcbd84cb8f89',
+ * Location: 'https://alkemy-ong-project.s3.sa-east-1.amazonaws.com/users/pollux.png',
+ * key: 'users/pollux.png',
+ * Key: 'users/pollux.png',
  * Bucket: 'alkemy-ong-project'
  * }
  *
  */
-exports.uploadFile = (file) => {
+exports.uploadFile = (file, folderName) => {
 	try {
 		// 1. Create a file stream
 		const fileStream = fs.createReadStream(file.path);
 
 		// 2. upload the file
 		const uploadParams = {
-			Bucket: bucketName,
+			Bucket: `${bucketName}/${folderName}`,
 			Body: fileStream,
 			Key: file.filename,
 		};

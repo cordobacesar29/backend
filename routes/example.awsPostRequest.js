@@ -2,7 +2,6 @@ const fs = require('fs');
 const util = require('util');
 const express = require('express');
 const multer = require('multer');
-const { v4: uuidv4 } = require('uuid');
 const unlinkFile = util.promisify(fs.unlink);
 
 const router = express.Router();
@@ -11,11 +10,11 @@ const router = express.Router();
 const storage = multer.diskStorage({
 	destination: 'uploads/',
 	filename: function (req, file, cb) {
-		cb(null, `${file.fieldname}-${uuidv4()}-${file.originalname}`);
+		cb(null, `${file.originalname}`);
 	},
 });
 
-// upload middleware
+// multer upload middleware
 const upload = multer({ storage }).single('image');
 
 // import upload file function from aws directory
@@ -24,12 +23,15 @@ const { uploadFile } = require('./../aws/aws-s3');
 /*** Posting a new image to aws ***/
 router.post('/images', upload, async (req, res, next) => {
 	// 1. extract image file from multer middleware
+
+	const { query } = req.query;
+	console.log(query);
 	const file = req.file;
 	console.log(file);
 
 	try {
-		// 2. upload image on aws bucket
-		const result = await uploadFile(file);
+		// 2. upload image file on aws bucket with folder name <users>
+		const result = await uploadFile(file, 'users');
 		console.log(result);
 
 		// 3. delete file from local uploads folder
@@ -55,7 +57,7 @@ router.post('/images', upload, async (req, res, next) => {
 /**
  * {
  * "status": "File uploaded to aws",
- * "imagePath": "https://alkemy-ong-project.s3.sa-east-1.amazonaws.com/image-1625063620801-dummy.jpeg"
+ * "imagePath": 'https://alkemy-ong-project.s3.sa-east-1.amazonaws.com/users/pollux.png',
  * }
  */
 

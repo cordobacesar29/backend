@@ -29,7 +29,6 @@ exports.validateRegisterInput = [
     .withMessage('email must not be empty')
     .bail()
     .isEmail()
-    .normalizeEmail()
     .withMessage('must be a valid email')
     .bail(),
   check('password')

@@ -1,5 +1,5 @@
 const express = require('express');
-const {checkToken} = require('../middlewares/auth');
+const {checkToken, isAdmin} = require('../middlewares/auth');
 
 const { validateInput } = require('../utils/validate');
 
@@ -12,6 +12,7 @@ router.post('/auth/login', //validateInput,este validate no sirve para el login
             userController.login);
 router.get('/auth/me', checkToken, userController.userData)
 
-router.delete('/users/:id', userController.deleteUser );
+router.get('/', [checkToken, isAdmin], userController.getUsers);
+router.delete('/users/:id', isAdmin, userController.deleteUser );
 
 module.exports = router;

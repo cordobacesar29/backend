@@ -7,14 +7,13 @@
     "dev": "nodemon ./bin/www"
   },
   "dependencies": {
-    "aws-sdk": "^2.936.0",
     "@sendgrid/mail": "^7.4.5",
+    "aws-sdk": "^2.936.0",
     "bcryptjs": "^2.4.3",
     "config": "^3.3.6",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
-    "dotenv": "^8.6.0",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "express-validator": "^6.12.0",

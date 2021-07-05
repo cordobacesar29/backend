@@ -11,4 +11,7 @@ router.post('/', validateNewsInput, newsController.createEntry);
 router.get('/:id', newsController.getNewsById);
 router.put('/:id', newsController.updateEntry);
 
+// delete news by id
+router.delete('news/:id', newsController.deleteNew);
+
 module.exports = router;

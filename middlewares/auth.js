@@ -12,7 +12,7 @@ const getTokenDecode = (req)=>{
             jwt.verify(token, config.get('configToken.SEED'), (err, decoded)=>{
                 if(err) reject("Without Authorization.")
 
-                resolve(decode)
+                resolve(decoded)
             })
         }
 
@@ -44,12 +44,12 @@ const isRoleAdmin = (role)=> {
 
 const isAdmin = async(req, res, next) => {
     try {
-        const {user} = req
+        const {user} = req;   
         if(user && isRoleAdmin(user.roleId)){
             return next();
         }
         const decodeJwt =  await getTokenDecode(req)
-        if (isRoleAdmin(decodeJwt.role))  return next();
+        if (isRoleAdmin(decodeJwt.data.role))  return next();
 
     } catch (error) {
        return res.status(400).json({message: error});

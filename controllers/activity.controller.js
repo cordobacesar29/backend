@@ -1,8 +1,6 @@
-const { request, response } = require('express');
-
 const models = require('../models');
 
-const createActivity = async(req = request, res = response) => {
+const createActivity = async(req, res) => {
     const { body } = req;
 
     try {

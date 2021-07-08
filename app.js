@@ -11,6 +11,8 @@ const usersRouter = require('./routes/user.routes');
 const sendmailRouter = require('./routes/sendmail.routes');
 const newsRouter = require('./routes/news.routes');
 
+const contactRouter = require('./routes/contact.routes');
+
 const app = express();
 app.use(cors());
 
@@ -28,6 +30,8 @@ app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/news', newsRouter);
 app.use('/api/sendmail', sendmailRouter);
+
+app.use('/api/contact', contactRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

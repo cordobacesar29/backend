@@ -18,7 +18,7 @@ const getTokenDecode = (req)=>{
 
         reject("Without Authorization.")
     })
-   
+
 }
 
 const checkToken = async (req, res, next) =>{

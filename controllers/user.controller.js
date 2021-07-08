@@ -10,7 +10,7 @@ const salt = config.get('salt');
 const isUser = (user)=> !!user;
 const generatehast = (password) => bcrypt.hashSync(password, salt)
 
-const register = async (req, res) => {
+const register = async (req, res, next) => {
   const { email, password } = req.body;
   try {
     const duplicatedUser = await models.User.findOne({ where: { email } });
@@ -56,7 +56,7 @@ const deleteUser = async (req, res) => {
 };
 
 const userData = async (req, res) => {
-  const userId = req.decoded
+  const userId = req.user.id
   // Getting user by id
   try {
     const userData = await models.User.findByPk(userId);
@@ -65,13 +65,30 @@ const userData = async (req, res) => {
         ok: false,
         msg: "User id does not exist",
       });
-    } else {
-      res.json(userData);
-    }
+    } 
+    res.json(userData);
   } catch (error) {
     return res.status(400).json({ error });
   }
 
+}
+
+const loginAfterRegister = (req, res) =>{
+  const payload = {id: res.locals.id};
+  try {
+    const jwToken = jwt.sign(
+      payload,
+      config.get("configToken.SEED"), 
+      { expiresIn: config.get("configToken.expiration")}
+    );
+    return res.status(201).json({
+      ok: true,
+      message: "user registered and authenticated",
+      token: jwToken
+    });
+  } catch (error) {
+    return res.status(401).json({ ok: false, error });
+  }  
 }
 
 const login = async (req, res) => {
@@ -85,7 +102,7 @@ const login = async (req, res) => {
       const jwToken = jwt.sign({data: {id: user.id, role: user.roleId}},config.get("configToken.SEED"), { expiresIn: config.get("configToken.expiration")});
       return res.status(200).json({
         message: "user authenticated",
-        jwToken
+        token: jwToken
       });
     }
     throw new Error('User or password incorrect')
@@ -99,5 +116,6 @@ module.exports = {
   login,
   userData,
   deleteUser,
+  loginAfterRegister,
   getUsers
  };

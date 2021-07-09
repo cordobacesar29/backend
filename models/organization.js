@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'organizationId',
         as: 'user',
       });
+      Organization.hasOne(models.SocialMedia, {
+        foreignKey: 'organizationId',
+        as: 'socialMedia'
+      });
     }
   };
   Organization.init({

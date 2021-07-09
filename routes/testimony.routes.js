@@ -1,11 +1,12 @@
-const express = require('express');
-
-const { isAdmin } = require('../middlewares/auth');
+const { Router } = require('express');
 
 const testimonyController = require('../controllers/testimony.controller');
 
-const router = express.Router();
+const { checkToken, isAdmin } = require('../middlewares/auth');
+
+const router = Router();
 
 router.delete('/:id', isAdmin, testimonyController.deleteTestimony);
+router.put('/:id', [checkToken, isAdmin], testimonyController.updateTestimony);
 
 module.exports = router;

@@ -33,7 +33,7 @@ app.use('/api/news', newsRouter);
 app.use('/api/sendmail', sendmailRouter);
 app.use('/api/testimonials', testimonyRouter);
 app.use('/api/activities', activityRouter);
-app.use('/api', organizationsRouter)
+app.use('/api/organizations', organizationsRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

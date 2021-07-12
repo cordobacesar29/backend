@@ -9,7 +9,37 @@ const getMembers = async (req, res) => {
   }
 };
 
+const updateMember= async (req, res) => {
+  const { id } = req.params;
+  const { body } = req;
+
+  try {
+    const member = await models.Member.findByPk(id);
+
+    if (!member) {
+      return res.status(404).json({
+        ok: false,
+        msg: `Not found member with the id ${id}`
+      });
+    }
+
+    await member.update(body);
+
+    res.json({
+      ok: true,
+      member
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      ok: false,
+      msg: 'Error'
+    });
+  }
+}
+
 module.exports = { 
-    getMembers
+    getMembers,
+    updateMember
 };
   

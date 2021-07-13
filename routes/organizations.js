@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const ORGController = require('../controllers/organization.controller');
+const organizationController = require('../controllers/organization.controller');
 
 
-router.get('/1/public', ORGController.getOrganization);
+router.get('/1/public', organizationController.getOrganization);
 
 module.exports = router;

@@ -9,7 +9,17 @@ const getMembers = async (req, res) => {
   }
 };
 
+const createMember = async (req, res) => {
+  try {
+    const data = await models.Member.create({ ...req.body });
+    return res.status(201).json(data);
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+};
+
 module.exports = { 
-    getMembers
+    getMembers,
+    createMember
 };
   

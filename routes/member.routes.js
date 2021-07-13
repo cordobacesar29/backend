@@ -6,6 +6,7 @@ const router = Router();
 
 
 router.get('/', memberController.getMembers);
-router.post('/', [isAdmin, validateMemberInput], memberController.createMember);
+router.post('/', isAdmin, validateMemberInput, memberController.createMember);
+router.delete('/:id', isAdmin, memberController.deleteMember);
 
 module.exports = router;

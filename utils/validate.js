@@ -124,3 +124,28 @@ exports.validateContact = [
 		next();
 	},
 ];
+
+
+exports.validateMemberInput = [
+	check('name')
+		.isString()
+		.trim()
+		.escape()
+		.not()
+		.isEmpty()
+		.withMessage('first name must not be empty')
+		.bail()
+		.isLength({ min: 3 })
+		.withMessage('minimun 3 characters required')
+		.bail(),
+	(req, res, next) => {
+		const errors = validationResult(req);
+		if (!errors.isEmpty()) {
+			const errorsArray = errors
+				.array()
+				.map((error) => ({ field: error.param, message: error.msg }));
+			return res.status(400).json({ errors: errorsArray });
+		}
+		next();
+	},
+];

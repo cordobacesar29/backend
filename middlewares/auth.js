@@ -1,24 +1,39 @@
 const jwt = require('jsonwebtoken');
-const config = require('../config/default.json');
+const config = require('config');
 
-const getTokenDecode = (req) => {
-	return new Promise((resolve, reject) => {
-		let token = req.get('Authorization');
-		if (token) {
-			if (token.startsWith('Bearer ')) {
-				// Remove Bearer from string
-				token = token.slice(7, token.length);
-			}
+const getTokenDecode = (req)=>{
+    return new Promise((resolve, reject)=>{
+        let token = req.get('Authorization');
+        if(token){
+            if (token.startsWith('Bearer ')) {
+                // Remove Bearer from string
+                token = token.slice(7, token.length);
+            }
+            jwt.verify(token, config.get("configToken.SEED"), (err, decoded)=>{
+                if(err) reject("Without Authorization.")
 
-			jwt.verify(token, config.configToken.SEED, (err, decoded) => {
-				if (err) reject('Without Authorization.');
+                resolve(decoded)
+            })
+        }
 
-				resolve(decoded);
-			});
-		}
+        reject("Without Authorization.")
+    })
 
-		reject('Without Authorization.');
-	});
+}
+
+const checkToken = async (req, res, next) =>{
+    try {
+        const decodeJwt =  await getTokenDecode(req)
+
+        req.user = decodeJwt.data;
+
+        return next();
+    } catch (error) {
+        return res.status(401).json({
+            error
+        })
+        
+    }
 };
 
 const checkToken = async (req, res, next) => {

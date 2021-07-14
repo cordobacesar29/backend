@@ -12,6 +12,7 @@ const sendmailRouter = require('./routes/sendmail.routes');
 const newsRouter = require('./routes/news.routes');
 const testimonyRouter = require('./routes/testimony.routes');
 const activityRouter = require('./routes/activity.routes');
+const organizationsRouter = require('./routes/organizations.routes');
 const memberRouter = require('./routes/member.routes');
 
 const contactRouter = require('./routes/contact.routes');
@@ -35,6 +36,7 @@ app.use('/api/news', newsRouter);
 app.use('/api/sendmail', sendmailRouter);
 app.use('/api/testimonials', testimonyRouter);
 app.use('/api/activities', activityRouter);
+app.use('/api/organizations', organizationsRouter)
 app.use('/api/members', memberRouter);
 
 app.use('/api/contact', contactRouter);

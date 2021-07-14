@@ -17,6 +17,9 @@ module.exports = {
       instagram: {
         type: Sequelize.STRING
       },
+      organizationId: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

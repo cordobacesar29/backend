@@ -133,7 +133,7 @@ exports.validateMemberInput = [
 		.escape()
 		.not()
 		.isEmpty()
-		.withMessage('first name must not be empty')
+		.withMessage('name must not be empty')
 		.bail()
 		.isLength({ min: 3 })
 		.withMessage('minimun 3 characters required')

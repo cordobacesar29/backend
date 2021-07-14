@@ -13,6 +13,9 @@ const newsRouter = require('./routes/news.routes');
 const testimonyRouter = require('./routes/testimony.routes');
 const activityRouter = require('./routes/activity.routes');
 const organizationsRouter = require('./routes/organizations.routes');
+const memberRouter = require('./routes/member.routes');
+
+const contactRouter = require('./routes/contact.routes');
 
 const app = express();
 app.use(cors());
@@ -34,21 +37,24 @@ app.use('/api/sendmail', sendmailRouter);
 app.use('/api/testimonials', testimonyRouter);
 app.use('/api/activities', activityRouter);
 app.use('/api/organizations', organizationsRouter)
+app.use('/api/members', memberRouter);
+
+app.use('/api/contact', contactRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-  next(createError(404));
+	next(createError(404));
 });
 
 // error handler
 app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+	// set locals, only providing error in development
+	res.locals.message = err.message;
+	res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+	// render the error page
+	res.status(err.status || 500);
+	res.render('error');
 });
 
 module.exports = app;

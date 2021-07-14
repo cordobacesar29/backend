@@ -7,6 +7,8 @@ const models = require('../models');
 
 const salt = config.get('salt');
 
+const sendMail = require('../utils/sendMail');
+
 const isUser = (user)=> !!user;
 const generatehast = (password) => bcrypt.hashSync(password, salt)
 
@@ -19,6 +21,13 @@ const register = async (req, res, next) => {
     }
     const hashedPassword = generatehast(password);
     const user = await models.User.create({ ...req.body, password: hashedPassword });
+    const msg = {
+      to: user.email, // 'to: nombre del email' Email destino
+      subject: "Sent from website contact Form", // 'subject: titulo del texto' Titulo del mensaje
+      text: "Hello", // 'text: contenido del mensaje' Descripción del mensaje
+      html: `<strong>Gracias por registrarte ${user.firstName} ${user.lastName}!</strong>`,
+    }
+    sendMail(msg);
     return res.status(201).json({ 
       id: user.id,
       email: user.email,

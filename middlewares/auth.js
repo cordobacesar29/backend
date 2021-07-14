@@ -36,27 +36,40 @@ const checkToken = async (req, res, next) =>{
     }
 };
 
-const isRoleAdmin = (role)=> {
-    const ROLE_ADMIN = 1;
-    
-    return role === ROLE_ADMIN
-}
+const checkToken = async (req, res, next) => {
+	try {
+		const decodeJwt = await getTokenDecode(req);
 
-const isAdmin = async(req, res, next) => {
-    try {
-        const {user} = req;   
-        if(user && isRoleAdmin(user.roleId)){
-            return next();
-        }
-        const decodeJwt =  await getTokenDecode(req)
-        if (isRoleAdmin(decodeJwt.data.role))  return next();
+		res.user = decodeJwt.data;
 
-    } catch (error) {
-       return res.status(400).json({message: error});
-    }
-}
+		return next();
+	} catch (error) {
+		return res.status(401).json({
+			error,
+		});
+	}
+};
+
+const isRoleAdmin = (role) => {
+	const ROLE_ADMIN = 1;
+
+	return role === ROLE_ADMIN;
+};
+
+const isAdmin = async (req, res, next) => {
+	try {
+		const { user } = res;
+		if (user && isRoleAdmin(user.role)) {
+			return next();
+		}
+		const decodeJwt = await getTokenDecode(req);
+		if (isRoleAdmin(decodeJwt.data.role)) return next();
+	} catch (error) {
+		return res.status(400).json({ message: error });
+	}
+};
 
 module.exports = {
-    checkToken,
-    isAdmin
+	checkToken,
+	isAdmin,
 };

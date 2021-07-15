@@ -172,36 +172,33 @@ exports.validateMemberInput = [
 	},
 ];
 
-
-
-exports.validateDate = [
-  check('name')
-    .not()
-    .isEmpty()
-    .withMessage('name must not be empty')
-    .bail()
-    .isString()
-    .trim()
-    .escape()
-    .bail(),
-  check('content')
-    .not()
-    .isEmpty()
-    .withMessage('content must not be empty')
-    .bail()
-    .isString()
-    .escape()
-    .trim()
-    .bail(),
-  (req, res, next) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      const errorsArray = errors
-        .array()
-        .map(error => ({ field: error.param, message: error.msg }));
-      return res.status(400).json({ errors: errorsArray });
-    }
-    next();
-  },
+exports.validateData = [
+	check('name')
+		.not()
+		.isEmpty()
+		.withMessage('name must not be empty')
+		.bail()
+		.isString()
+		.trim()
+		.escape()
+		.bail(),
+	check('content')
+		.not()
+		.isEmpty()
+		.withMessage('content must not be empty')
+		.bail()
+		.isString()
+		.escape()
+		.trim()
+		.bail(),
+	(req, res, next) => {
+		const errors = validationResult(req);
+		if (!errors.isEmpty()) {
+			const errorsArray = errors
+				.array()
+				.map((error) => ({ field: error.param, message: error.msg }));
+			return res.status(400).json({ errors: errorsArray });
+		}
+		next();
+	},
 ];
-

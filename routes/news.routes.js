@@ -1,13 +1,17 @@
-const express = require('express');
+const { Router } = require('express');
 
 const newsController = require('../controllers/news.controller');
 
-const router = express.Router();
+const { validateNewsInput } = require('../utils/validate');
 
-// router.post('/news', newsController.createEntry);
-router.get('/news', newsController.getNewsType);
+const router = Router();
 
-// get news by id
-router.get('/news/:id', newsController.getNewsById);
+router.get('/', newsController.getNewsType);
+router.post('/', validateNewsInput, newsController.createEntry);
+router.get('/:id', newsController.getNewsById);
+router.put('/:id', newsController.updateEntry);
+
+// delete news by id
+router.delete('news/:id', newsController.deleteNew);
 
 module.exports = router;

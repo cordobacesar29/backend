@@ -5,10 +5,11 @@ const sendMail = require('../utils/sendMail');
 
 exports.getContactsControler = async (req, res) => {
 	try {
-        await models.Contacts.findAll();
+        const contacts = await models.Contacts.findAll();
         return res.status(200).json({
             status: 'success',
-            message: 'contacts returned successfullyv'
+            message: 'contacts returned successfully',
+            contacts
         });
     } 
     catch (e) {

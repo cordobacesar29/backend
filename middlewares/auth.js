@@ -35,21 +35,6 @@ const checkToken = async (req, res, next) =>{
         
     }
 };
-
-const checkToken = async (req, res, next) => {
-	try {
-		const decodeJwt = await getTokenDecode(req);
-
-		res.user = decodeJwt.data;
-
-		return next();
-	} catch (error) {
-		return res.status(401).json({
-			error,
-		});
-	}
-};
-
 const isRoleAdmin = (role) => {
 	const ROLE_ADMIN = 1;
 

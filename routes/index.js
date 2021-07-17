@@ -1,8 +1,23 @@
-var express = require('express');
-var router = express.Router();
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+const usersRouter = require('./user.routes');
+const sendmailRouter = require('./sendmail.routes');
+const newsRouter = require('./news.routes');
+const testimonyRouter = require('./testimony.routes');
+const activityRouter = require('./activity.routes');
+const organizationsRouter = require('./organizations.routes');
+const memberRouter = require('./member.routes');
+const contactRouter = require('./contact.routes');
+const categoryRouter = require('./category.routes');
 
-module.exports = router;
+const createRoutes = app => {
+  app.use('/api/users', usersRouter);
+  app.use('/api/news', newsRouter);
+  app.use('/api/sendmail', sendmailRouter);
+  app.use('/api/testimonials', testimonyRouter);
+  app.use('/api/activities', activityRouter);
+  app.use('/api/organizations', organizationsRouter);
+  app.use('/api/members', memberRouter);
+  app.use('/api/contact', contactRouter);
+  app.use('/api/categories', categoryRouter);
+};
+
+module.exports = createRoutes;

@@ -18,4 +18,6 @@ router
 		categoryController.createCategory
 	);
 
+router.put('/categories/:id', [checkToken, isAdmin], categoryController.updateCategory);
+
 module.exports = router;

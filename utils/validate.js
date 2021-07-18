@@ -127,4 +127,13 @@ exports.validaTestimony = [
   _contentIsValid,
   _imageIsValid,
   handleValidate,
+]
+
+
+exports.validateLoginInput = [
+  _emailIsValid,
+  check('password')
+  .isLength({ min: 6 })
+  .withMessage('minimun 6 characters required'),
+  handleValidate,
 ];

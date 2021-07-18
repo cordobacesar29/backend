@@ -37,4 +37,24 @@ const updateTestimony = async (req, res) => {
   }
 };
 
-module.exports = { deleteTestimony, getTestimonials, updateTestimony };
+
+//************************************************************** */
+
+
+const createTestimony = async (req, res) => {
+	try {
+    const result = await models.Testimony.create(req.body);
+    return res.status(201).json({
+      status: 'success',
+      message: 'successfully created testimony'
+    });
+  } catch (e) {
+    return res.status(400).json({
+     e,message: 'error loading testimony',
+    });
+  }
+};
+//************************************************************** */
+
+
+module.exports = { updateTestimony, deleteTestimony, createTestimony, getTestimonials };

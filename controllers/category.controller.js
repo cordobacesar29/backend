@@ -37,3 +37,20 @@ exports.updateCategory = async (req, res) => {
 		return res.status(400).json({ error });
 	}
 };
+
+
+exports.deleteCategory = async (req, res) => {
+	const { id } = req.params;
+	try {
+		const Category = await models.Category.findByPk(id);
+		if (!Category) {
+			return res.status(400).json({ error: 'Category to delete does not exist' });
+		}
+		const deleteCategory = await models.Category.destroy({
+			where: { id: id },
+		});
+		return res.status(201).json(deleteCategory);
+	} catch (error) {
+		return res.status(400).json({ error });
+	}
+};

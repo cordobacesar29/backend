@@ -11,6 +11,7 @@ const router = express.Router();
 
 router
 	.route('/')
+	.get(categoryController.getAllCategories)
 	.post(
 		[checkToken, isAdmin],
 		validateCategory,

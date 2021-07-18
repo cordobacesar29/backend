@@ -23,3 +23,17 @@ exports.getAllCategories = async (req, res) => {
 		return res.status(400).json({ error });
 	}
 };
+
+exports.updateCategory = async (req, res) => {
+	const { id } = req.params;
+	try {
+		const categoryToUpdate = await models.Category.findOne({ where: { id } });
+		if (!categoryToUpdate) {
+			return res.status(404).json({ error: 'category not found with that ID' });
+		}
+		await categoryToUpdate.update(req.body);
+		return res.status(200).json(categoryToUpdate);
+	} catch (error) {
+		return res.status(400).json({ error });
+	}
+};

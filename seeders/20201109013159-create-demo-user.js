@@ -12,7 +12,7 @@ module.exports = {
 					image:
 						'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
 					// Important: Password not encrypted yet!
-					password: '1234',
+					password: '1234567',
 					organizationId: 1,
 					roleId: 1,
 					createdAt: new Date(),
@@ -25,7 +25,7 @@ module.exports = {
 					image:
 						'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
 					// Important: Password not encrypted yet!
-					password: '1234',
+					password: '1234567',
 					organizationId: 1,
 					roleId: 1,
 					createdAt: new Date(),
@@ -38,7 +38,7 @@ module.exports = {
 					image:
 						'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
 					// Important: Password not encrypted yet!
-					password: '1234',
+					password: '1234567',
 					organizationId: 1,
 					roleId: 1,
 					createdAt: new Date(),
@@ -51,7 +51,7 @@ module.exports = {
 					image:
 						'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
 					// Important: Password not encrypted yet!
-					password: '1234',
+					password: '1234567',
 					organizationId: 1,
 					roleId: 1,
 					createdAt: new Date(),
@@ -64,7 +64,7 @@ module.exports = {
 					image:
 						'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
 					// Important: Password not encrypted yet!
-					password: '1234',
+					password: '1234567',
 					organizationId: 1,
 					roleId: 1,
 					createdAt: new Date(),
@@ -77,7 +77,7 @@ module.exports = {
 					image:
 						'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
 					// Important: Password not encrypted yet!
-					password: '1234',
+					password: '1234567',
 					organizationId: 1,
 					roleId: 1,
 					createdAt: new Date(),
@@ -90,7 +90,7 @@ module.exports = {
 					image:
 						'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
 					// Important: Password not encrypted yet!
-					password: '1234',
+					password: '1234567',
 					organizationId: 1,
 					roleId: 1,
 					createdAt: new Date(),
@@ -103,7 +103,7 @@ module.exports = {
 					image:
 						'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
 					// Important: Password not encrypted yet!
-					password: '1234',
+					password: '1234567',
 					organizationId: 1,
 					roleId: 1,
 					createdAt: new Date(),
@@ -116,7 +116,7 @@ module.exports = {
 					image:
 						'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
 					// Important: Password not encrypted yet!
-					password: '1234',
+					password: '1234567',
 					organizationId: 1,
 					roleId: 1,
 					createdAt: new Date(),
@@ -129,7 +129,7 @@ module.exports = {
 					image:
 						'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
 					// Important: Password not encrypted yet!
-					password: '1234',
+					password: '1234567',
 					organizationId: 1,
 					roleId: 1,
 					createdAt: new Date(),
@@ -142,7 +142,7 @@ module.exports = {
 					image:
 						'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
 					// Important: Password not encrypted yet!
-					password: '1234',
+					password: '1234567',
 					organizationId: 1,
 					roleId: 2,
 					createdAt: new Date(),
@@ -155,7 +155,7 @@ module.exports = {
 					image:
 						'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
 					// Important: Password not encrypted yet!
-					password: '1234',
+					password: '1234567',
 					organizationId: 1,
 					roleId: 2,
 					createdAt: new Date(),
@@ -168,7 +168,7 @@ module.exports = {
 					image:
 						'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
 					// Important: Password not encrypted yet!
-					password: '1234',
+					password: '1234567',
 					organizationId: 1,
 					roleId: 2,
 					createdAt: new Date(),
@@ -181,7 +181,7 @@ module.exports = {
 					image:
 						'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
 					// Important: Password not encrypted yet!
-					password: '1234',
+					password: '1234567',
 					organizationId: 1,
 					roleId: 2,
 					createdAt: new Date(),
@@ -194,7 +194,7 @@ module.exports = {
 					image:
 						'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
 					// Important: Password not encrypted yet!
-					password: '1234',
+					password: '1234567',
 					organizationId: 1,
 					roleId: 2,
 					createdAt: new Date(),
@@ -207,7 +207,7 @@ module.exports = {
 					image:
 						'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
 					// Important: Password not encrypted yet!
-					password: '1234',
+					password: '1234567',
 					organizationId: 1,
 					roleId: 2,
 					createdAt: new Date(),
@@ -220,7 +220,7 @@ module.exports = {
 					image:
 						'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
 					// Important: Password not encrypted yet!
-					password: '1234',
+					password: '1234567',
 					organizationId: 1,
 					roleId: 2,
 					createdAt: new Date(),
@@ -233,7 +233,7 @@ module.exports = {
 					image:
 						'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
 					// Important: Password not encrypted yet!
-					password: '1234',
+					password: '1234567',
 					organizationId: 1,
 					roleId: 2,
 					createdAt: new Date(),
@@ -246,7 +246,7 @@ module.exports = {
 					image:
 						'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
 					// Important: Password not encrypted yet!
-					password: '1234',
+					password: '1234567',
 					organizationId: 1,
 					roleId: 2,
 					createdAt: new Date(),
@@ -259,7 +259,7 @@ module.exports = {
 					image:
 						'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
 					// Important: Password not encrypted yet!
-					password: '1234',
+					password: '1234567',
 					organizationId: 1,
 					roleId: 2,
 					createdAt: new Date(),

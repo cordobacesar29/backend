@@ -106,6 +106,7 @@ const login = async (req, res) => {
     const user = await models.User.findOne({ where: { email } });
     if (isUser(user)) {
       const passwordValidate =  bcrypt.compareSync(password , user.password);
+      console.log('passwordvalidate: ', passwordValidate);
       if(!passwordValidate)   throw new Error('User or password incorrect')
       
       const jwToken = jwt.sign({data: {id: user.id, role: user.roleId}},config.get("configToken.SEED"), { expiresIn: config.get("configToken.expiration")});
@@ -126,5 +127,6 @@ module.exports = {
   userData,
   deleteUser,
   loginAfterRegister,
-  getUsers
+  getUsers,
+  generatehast
  };

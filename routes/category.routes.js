@@ -18,4 +18,8 @@ router
 		categoryController.createCategory
 	);
 
+router.put('/:id', [checkToken, isAdmin], categoryController.updateCategory);
+
+router.delete('/:id', [checkToken, isAdmin], categoryController.deleteCategory);
+
 module.exports = router;

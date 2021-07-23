@@ -15,5 +15,5 @@ const getAllOrganizations = async (req, res) => {
 };
 
 module.exports = {
-  getAllOrganizations
+  getAllOrganizations,
 };

@@ -11,7 +11,6 @@ module.exports = {
           phone: '12345678',
           message:
             'Tours by helicopters are one of the most famous and fun things to do in NYC, especially for first-time visitors.',
-          deletedAt: new Date(),
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -20,7 +19,6 @@ module.exports = {
           email: 'test@gmail.com',
           message:
             'No visit to New York is complete without popping over to Central Park, the iconic green hub sitting pretty in the middle of Manhattan',
-          deletedAt: new Date(),
           phone: '12345678',
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -30,7 +28,6 @@ module.exports = {
           email: 'test@gmail.com',
           message:
             'Van Gogh: The Immersive Experience is an innovative art exhibition in NYC that displays the universe of Vincent van Gogh in a 360-degree digital composition.',
-          deletedAt: new Date(),
           phone: '12345678',
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -40,7 +37,6 @@ module.exports = {
           email: 'test@gmail.com',
           message:
             'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non magnam quam possimus praesentium tempora. Commodi, quam, hic officiis ullam suscipit minima, atque mollitia saepe similique culpa quasi. Tempora, deleniti molestias.',
-          deletedAt: new Date(),
           phone: '12345678',
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -50,7 +46,6 @@ module.exports = {
           email: 'test@gmail.com',
           message:
             'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non magnam quam possimus praesentium tempora. Commodi, quam, hic officiis ullam suscipit minima, atque mollitia saepe similique culpa quasi. Tempora, deleniti molestias.',
-          deletedAt: new Date(),
           phone: '12345678',
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -60,7 +55,6 @@ module.exports = {
           email: 'test@gmail.com',
           message:
             'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non magnam quam possimus praesentium tempora. Commodi, quam, hic officiis ullam suscipit minima, atque mollitia saepe similique culpa quasi. Tempora, deleniti molestias.',
-          deletedAt: new Date(),
           createdAt: new Date(),
           updatedAt: new Date(),
         },

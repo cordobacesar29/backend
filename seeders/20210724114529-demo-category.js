@@ -9,7 +9,6 @@ module.exports = {
           name: 'test 1',
           description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis rerum necessitatibus illo ea culpa, architecto inventore at ut. Ut exercitationem officiis quia provident blanditiis eos odit eum deserunt, non hic.',
-          deletedAt: new Date(),
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -17,7 +16,6 @@ module.exports = {
           name: 'test 2',
           description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis rerum necessitatibus illo ea culpa, architecto inventore at ut. Ut exercitationem officiis quia provident blanditiis eos odit eum deserunt, non hic.',
-          deletedAt: new Date(),
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -25,7 +23,6 @@ module.exports = {
           name: 'test 3',
           description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis rerum necessitatibus illo ea culpa, architecto inventore at ut. Ut exercitationem officiis quia provident blanditiis eos odit eum deserunt, non hic.',
-          deletedAt: new Date(),
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -33,7 +30,6 @@ module.exports = {
           name: 'test 4',
           description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis rerum necessitatibus illo ea culpa, architecto inventore at ut. Ut exercitationem officiis quia provident blanditiis eos odit eum deserunt, non hic.',
-          deletedAt: new Date(),
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -41,7 +37,6 @@ module.exports = {
           name: 'test 5',
           description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis rerum necessitatibus illo ea culpa, architecto inventore at ut. Ut exercitationem officiis quia provident blanditiis eos odit eum deserunt, non hic.',
-          deletedAt: new Date(),
           createdAt: new Date(),
           updatedAt: new Date(),
         },

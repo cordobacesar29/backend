@@ -10,40 +10,46 @@ module.exports = {
      *   name: 'John Doe',
      *   isBetaMember: false
      * }], {});
-    */
-    
-     await queryInterface.bulkInsert('slides', [{
-        imageUrl: 'https://www.cleverfiles.com/howto/wp-content/uploads/2018/03/minion.jpg',
-       text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium in at nostrum totam doloremque minima voluptatibus ullam odit deleniti fugiat.',
-       order: 1,
-       organizationId: 1,
-       createdAt: new Date,
-        updatedAt: new Date
-      }], {});
+     */
 
-		await queryInterface.bulkInsert(
-			'slides',
-			[
-				{
-					imageUrl:
-						'https://www.cleverfiles.com/howto/wp-content/uploads/2018/03/minion.jpg',
-					text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium in at nostrum totam doloremque minima voluptatibus ullam odit deleniti fugiat.',
-					order: 1,
-					organizationId: 1,
-					createdAt: new Date(),
-					updatedAt: new Date(),
-				},
-			],
-			{}
-		);
-	},
+    await queryInterface.bulkInsert(
+      'slides',
+      [
+        {
+          imageUrl: 'https://i.imgur.com/TI5y5bu.jpg',
+          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium in at nostrum totam doloremque minima voluptatibus ullam odit deleniti fugiat.',
+          order: 1,
+          organizationId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          imageUrl: 'https://i.imgur.com/Y4jAeDH.jpg',
+          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium in at nostrum totam doloremque minima voluptatibus ullam odit deleniti fugiat.',
+          order: 1,
+          organizationId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          imageUrl: 'https://i.imgur.com/knVhQyC.jpg',
+          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium in at nostrum totam doloremque minima voluptatibus ullam odit deleniti fugiat.',
+          order: 1,
+          organizationId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+      ],
+      {}
+    );
+  },
 
-	down: async (queryInterface, Sequelize) => {
-		/**
-		 * Add commands to revert seed here.
-		 *
-		 * Example:
-		 * await queryInterface.bulkDelete('People', null, {});
-		 */
-	},
+  down: async (queryInterface, Sequelize) => {
+    /**
+     * Add commands to revert seed here.
+     *
+     * Example:
+     * await queryInterface.bulkDelete('People', null, {});
+     */
+  },
 };

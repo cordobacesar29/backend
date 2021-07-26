@@ -6,54 +6,53 @@ module.exports = {
       'Testimonies',
       [
         {
-          name: 'Helicopter Ride',
+          name: 'Graciela Camino',
           image:
-            'https://tourscanner.com/blog/wp-content/uploads/2018/03/new-york-helicopter-tour.jpg',
-          content:
-            'Tours by helicopters are one of the most famous and fun things to do in NYC, especially for first-time visitors.',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          name: 'Central Park',
-          image:
-            'https://tourscanner.com/blog/wp-content/uploads/2021/04/Central-Park-NYC.jpg',
-          content:
-            'No visit to New York is complete without popping over to Central Park, the iconic green hub sitting pretty in the middle of Manhattan',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          name: 'Van Gogh art',
-          image:
-            'https://tourscanner.com/blog/wp-content/uploads/2018/03/Van-Gogh-Experience.jpg',
-          content:
-            'Van Gogh: The Immersive Experience is an innovative art exhibition in NYC that displays the universe of Vincent van Gogh in a 360-degree digital composition.',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          name: 'Brooklyn Bridge',
-          image:
-            'https://tourscanner.com/blog/wp-content/uploads/2018/03/new-york-helicopter-tour.jpg',
+            'https://static.wixstatic.com/media/584e5c_eb4d109e04a14db795fabe197896dd36~mv2.jpeg/v1/fill/w_620,h_268,al_c,q_80,usm_0.66_1.00_0.01/pexels-photo-4130688.webp',
           content:
             'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non magnam quam possimus praesentium tempora. Commodi, quam, hic officiis ullam suscipit minima, atque mollitia saepe similique culpa quasi. Tempora, deleniti molestias.',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: 'Helicopter Ride',
-          image:
-            'https://tourscanner.com/blog/wp-content/uploads/2021/04/Cycle-over-Brooklyn-Bridge.jpg',
+          name: 'Martin Peralta',
+          image: 'https://i.imgur.com/PqbUkuV.jpg',
           content:
             'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non magnam quam possimus praesentium tempora. Commodi, quam, hic officiis ullam suscipit minima, atque mollitia saepe similique culpa quasi. Tempora, deleniti molestias.',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: 'Manhattan over the Hudson',
+          name: 'Camila Spitze',
           image:
-            'https://tourscanner.com/blog/wp-content/uploads/2018/03/one_world_4.jpg',
+            'https://magisterenperiodismo.com/elfenix/wp-content/uploads/2020/06/WhatsApp-Image-2020-06-05-at-11.28.48-2-1024x768.jpeg',
+          content:
+            'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non magnam quam possimus praesentium tempora. Commodi, quam, hic officiis ullam suscipit minima, atque mollitia saepe similique culpa quasi. Tempora, deleniti molestias.',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: 'Esmeralda Martínez',
+          image:
+            'https://futbol4life.com/wp-content/uploads/2021/03/7-ngo-help-children-07.jpg',
+          content:
+            'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non magnam quam possimus praesentium tempora. Commodi, quam, hic officiis ullam suscipit minima, atque mollitia saepe similique culpa quasi. Tempora, deleniti molestias.',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: 'Ezequiel López',
+          image:
+            'http://ebuenasnoticias.com/wp-content/uploads/2014/12/ninos_ong_idea_libre_ok.jpg',
+          content:
+            'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non magnam quam possimus praesentium tempora. Commodi, quam, hic officiis ullam suscipit minima, atque mollitia saepe similique culpa quasi. Tempora, deleniti molestias.',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: 'Claudio Giralt',
+          image:
+            'https://borgenproject.org/wp-content/uploads/NGOs-Have-Evolved-1030x686.jpg',
           content:
             'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non magnam quam possimus praesentium tempora. Commodi, quam, hic officiis ullam suscipit minima, atque mollitia saepe similique culpa quasi. Tempora, deleniti molestias.',
           createdAt: new Date(),

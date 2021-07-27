@@ -13,11 +13,12 @@ const getActivities = async (req, res) => {
 
 const getActivityById = async (req, res) => {
   const { id } = req.params;
-  const activity = await models.Activities.findOne({ where: { id } });
-
   try {
-    if (activity) res.status(200).json(activity);
-    else res.staus(404).json('No activity found with given ID');
+    const activity = await models.Activities.findOne({ where: { id } });
+    if (!activity) {
+      return res.status(404).json('No activity found with given ID');
+    }
+    return res.status(200).json(activity);
   } catch (error) {
     return res.status(400).json(error.message);
   }
@@ -25,23 +26,15 @@ const getActivityById = async (req, res) => {
 
 const createActivity = async (req, res) => {
   const { name, content } = req.body;
-
   try {
     const result = await uploadFile(req.file, 'activities');
-    console.log(result);
-
     const newActivity = {
       image: result.Location,
       name,
       content,
     };
-
     const activitySave = await models.Activities.create(newActivity);
-
-    res.json({
-      ok: true,
-      activity: activitySave,
-    });
+    res.status(201).json({ ok: true, activity: activitySave });
   } catch (error) {
     console.log(error);
     res.status(500).json({

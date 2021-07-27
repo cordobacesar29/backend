@@ -1,6 +1,9 @@
 const dotenv = require('dotenv').config();
 const fs = require('fs');
 const S3 = require('aws-sdk/clients/s3');
+const util = require('util');
+
+const unlinkFile = util.promisify(fs.unlink);
 
 const bucketName = process.env.AWS_BUCKET_NAME;
 const region = process.env.AWS_BUCKET_REGION;
@@ -9,9 +12,9 @@ const secretAccessKey = process.env.AWS_BUCKET_SECRET_KEY;
 
 // create new S3 instance
 const s3 = new S3({
-	region,
-	accessKeyId,
-	secretAccessKey,
+  region,
+  accessKeyId,
+  secretAccessKey,
 });
 
 // 1. ulpload a filte to s3
@@ -31,23 +34,25 @@ const s3 = new S3({
  * }
  *
  */
-exports.uploadFile = (file, folderName) => {
-	try {
-		// 1. Create a file stream
-		const fileStream = fs.createReadStream(file.path);
+exports.uploadFile = async (file, folderName) => {
+  try {
+    // 1. Create a file stream
+    const fileStream = fs.createReadStream(file.path);
 
-		// 2. upload the file
-		const uploadParams = {
-			Bucket: `${bucketName}/${folderName}`,
-			Body: fileStream,
-			Key: file.filename,
-		};
+    // 2. upload the file
+    const uploadParams = {
+      Bucket: `${bucketName}/${folderName}`,
+      Body: fileStream,
+      Key: file.filename,
+    };
 
-		// 3. returns a promise
-		return s3.upload(uploadParams).promise();
+    // 3. returns a promise
+    const uploadedImage = await s3.upload(uploadParams).promise();
+    await unlinkFile(file.path);
+    return uploadedImage;
 
-		// 4. log error if upload fails
-	} catch (error) {
-		console.error(error, error.stack);
-	}
+    // 4. log error if upload fails
+  } catch (error) {
+    console.error(error, error.stack);
+  }
 };

@@ -1,3 +1,5 @@
+const { uploadFile } = require('../aws/aws-s3');
+
 const models = require('../models');
 
 const getActivities = async (req, res) => {
@@ -22,16 +24,18 @@ const getActivityById = async (req, res) => {
 };
 
 const createActivity = async (req, res) => {
-  const { filename } = req.file;
   const { name, content } = req.body;
 
-  const newActivity = {
-    image: filename,
-    name,
-    content,
-  };
-
   try {
+    const result = await uploadFile(req.file, 'activities');
+    console.log(result);
+
+    const newActivity = {
+      image: result.Location,
+      name,
+      content,
+    };
+
     const activitySave = await models.Activities.create(newActivity);
 
     res.json({

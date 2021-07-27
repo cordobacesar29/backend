@@ -1,35 +1,20 @@
 const express = require('express');
-const { check } = require('express-validator');
 
-const {
-	createActivity,
-	updateActivity,
-	getActivityById,
-} = require('../controllers/activity.controller');
-const { validateFields } = require('../middlewares/validateFields');
+const activityController = require('../controllers/activity.controller');
+
+const upload = require('../middlewares/upload');
+const { validateActivityInput } = require('../utils/validate');
 
 const router = express.Router();
 
-router.get('/:id', getActivityById);
-
+router.get('/', activityController.getActivities);
+router.get('/:id', activityController.getActivityById);
 router.post(
-	'/',
-	[
-		check('name', 'El nombre es obligatorio').not().isEmpty(),
-		check('content', 'El contenido es obligatorio').not().isEmpty(),
-		validateFields,
-	],
-	createActivity
+  '/',
+  upload,
+  validateActivityInput,
+  activityController.createActivity
 );
-
-router.put(
-	'/:id',
-	[
-		check('name', 'El nombre es obligatorio').not().isEmpty(),
-		check('content', 'El contenido es obligatorio').not().isEmpty(),
-		validateFields,
-	],
-	updateActivity
-);
+router.put('/:id', validateActivityInput, activityController.updateActivity);
 
 module.exports = router;

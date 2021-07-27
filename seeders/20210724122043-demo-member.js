@@ -6,44 +6,44 @@ module.exports = {
       'Members',
       [
         {
-          name: 'Helicopter Ride',
-          image:
-            'https://tourscanner.com/blog/wp-content/uploads/2018/03/new-york-helicopter-tour.jpg',
+          name: 'Cecilia Mendez',
+          image: 'https://i.imgur.com/E7HBbCE.jpeg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: 'Central Park',
-          image:
-            'https://tourscanner.com/blog/wp-content/uploads/2021/04/Central-Park-NYC.jpg',
+          name: 'Marco Fernandez',
+          image: 'https://i.imgur.com/2TqM6QC.jpeg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: 'Van Gogh art',
-          image:
-            'https://tourscanner.com/blog/wp-content/uploads/2018/03/Van-Gogh-Experience.jpg',
+          name: 'María García',
+          image: 'https://i.imgur.com/IeNCUM6.jpeg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: 'Brooklyn Bridge',
-          image:
-            'https://tourscanner.com/blog/wp-content/uploads/2018/03/new-york-helicopter-tour.jpg',
+          name: 'María Irola',
+          image: 'https://i.imgur.com/qTh3AVZ.jpeg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: 'Helicopter Ride',
-          image:
-            'https://tourscanner.com/blog/wp-content/uploads/2021/04/Cycle-over-Brooklyn-Bridge.jpg',
+          name: 'Marita Gómez',
+          image: 'https://i.imgur.com/N3Gjr40.jpeg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: 'Manhattan over the Hudson',
-          image:
-            'https://tourscanner.com/blog/wp-content/uploads/2018/03/one_world_4.jpg',
+          name: 'Miriam Rodríguez',
+          image: 'https://i.imgur.com/TWKbORi.jpeg',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: 'Rodrigo Fuente',
+          image: 'https://i.imgur.com/IGZt6Bf.jpeg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },

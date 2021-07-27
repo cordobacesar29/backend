@@ -23,6 +23,8 @@ const register = async (req, res, next) => {
       ...req.body,
       password: hashedPassword,
     });
+    res.locals.id = user.id;
+    res.locals.role = user.roleId;
     const msg = {
       to: user.email, // 'to: nombre del email' Email destino
       subject: 'Sent from website contact Form', // 'subject: titulo del texto' Titulo del mensaje
@@ -30,12 +32,13 @@ const register = async (req, res, next) => {
       html: `<strong>Gracias por registrarte ${user.firstName} ${user.lastName}!</strong>`,
     };
     sendMail(msg);
-    return res.status(201).json({
-      id: user.id,
-      email: user.email,
-      firstName: user.firstName,
-      lastName: user.lastName,
-    });
+    return next();
+    // return res.status(201).json({
+    //   id: user.id,
+    //   email: user.email,
+    //   firstName: user.firstName,
+    //   lastName: user.lastName,
+    // });
   } catch (error) {
     return res.status(400).json({ error });
   }
@@ -83,16 +86,15 @@ const userData = async (req, res) => {
 };
 
 const loginAfterRegister = (req, res) => {
-  const payload = { id: res.locals.id };
+  const payload = { data: { id: res.locals.id, role: res.locals.role } };
   try {
     const jwToken = jwt.sign(payload, config.get('configToken.SEED'), {
       expiresIn: config.get('configToken.expiration'),
     });
     return res.status(201).json({
-      ok: true,
       message: 'user registered and authenticated',
       token: jwToken,
-      userRole: user.roleId,
+      userRole: res.locals.role,
     });
   } catch (error) {
     return res.status(401).json({ ok: false, error });

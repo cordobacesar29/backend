@@ -1,15 +1,23 @@
 const models = require('../models');
 
+const getActivities = async (req, res) => {
+  try {
+    const activities = await models.Activities.findAll();
+    return res.status(200).json(activities);
+  } catch (error) {
+    return res.status(400).json(error.message);
+  }
+};
 
 const getActivityById = async (req, res) => {
   const { id } = req.params;
-  const activity = await models.Activities.findOne({ where: { id: id } });
+  const activity = await models.Activities.findOne({ where: { id } });
 
   try {
     if (activity) res.status(200).json(activity);
     else res.staus(404).json('No activity found with given ID');
   } catch (error) {
-    return res.status(500).json(error.message);
+    return res.status(400).json(error.message);
   }
 };
 
@@ -70,6 +78,7 @@ const updateActivity = async (req, res) => {
 
 module.exports = {
   createActivity,
-  updateActivity,
+  getActivities,
   getActivityById,
+  updateActivity,
 };

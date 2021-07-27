@@ -136,3 +136,5 @@ exports.validateLoginInput = [
     .withMessage('minimun 6 characters required'),
   handleValidate,
 ];
+
+exports.validateActivityInput = [_nameIsValid, _contentIsValid, handleValidate];

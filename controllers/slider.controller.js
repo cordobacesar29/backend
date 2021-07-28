@@ -9,7 +9,14 @@ const getSlides = async (req, res) => {
   }
 };
 
-module.exports = {
-   getSlides,
+const updateSliders = async (req, res) => {
+  try {
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
 };
-  
+
+module.exports = {
+  getSlides,
+  updateSliders,
+};

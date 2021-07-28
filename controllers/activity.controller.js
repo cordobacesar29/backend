@@ -45,8 +45,8 @@ const createActivity = async (req, res) => {
 };
 
 const updateActivity = async (req, res) => {
+  const { name, content } = req.body;
   const { id } = req.params;
-  const { body } = req;
 
   try {
     const activity = await models.Activities.findByPk(id);
@@ -57,13 +57,14 @@ const updateActivity = async (req, res) => {
         msg: `No existe actividad con el id ${id}`,
       });
     }
-
-    await activity.update(body);
-
-    res.json({
-      ok: true,
-      activity,
-    });
+    const result = await uploadFile(req.file, 'activities');
+    const updatedActivity = {
+      image: result.Location,
+      name,
+      content,
+    };
+    await activity.update(updatedActivity);
+    res.status(201).json({ ok: true, activity: updatedActivity });
   } catch (error) {
     console.log(error);
     res.status(500).json({

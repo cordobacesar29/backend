@@ -69,17 +69,37 @@ const deleteUser = async (req, res) => {
   }
 };
 
-const userData = async (req, res) => {
-  const userId = req.user.id;
+const getMyProfile = async (req, res) => {
+  const { id } = req.user;
   try {
-    const userData = await models.User.findByPk(userId);
-    if (isUser(user)) {
-      res.status(404).json({
+    const userData = await models.User.findOne({ where: { id } });
+    if (isUser(userData)) {
+      return res.status(404).json({
         ok: false,
         msg: 'User id does not exist',
       });
     }
     res.json(userData);
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+};
+
+const getUserById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const user = await models.User.findOne({
+      where: { id },
+      attributes: ['firstName', 'lastName', 'email'],
+    });
+    console.log({ user });
+    if (!isUser(user)) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'User id does not exist',
+      });
+    }
+    return res.status(200).json(user);
   } catch (error) {
     return res.status(400).json({ error });
   }
@@ -128,9 +148,10 @@ const login = async (req, res) => {
 module.exports = {
   register,
   login,
-  userData,
+  getMyProfile,
   deleteUser,
   loginAfterRegister,
   getUsers,
   generatehast,
+  getUserById,
 };

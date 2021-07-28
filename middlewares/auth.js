@@ -4,7 +4,6 @@ const config = require('config');
 const getTokenDecode = req => {
   return new Promise((resolve, reject) => {
     let token = req.get('Authorization');
-    console.log(token);
     if (token) {
       if (token.startsWith('Bearer ')) {
         // Remove Bearer from string
@@ -44,7 +43,6 @@ const isAdmin = async (req, res, next) => {
       return next();
     }
     const decodeJwt = await getTokenDecode(req);
-    console.log(decodeJwt);
     if (isRoleAdmin(decodeJwt.data.role)) return next();
   } catch (error) {
     return res.status(400).json({ message: error });

@@ -15,6 +15,6 @@ router.post(
   validateActivityInput,
   activityController.createActivity
 );
-router.put('/:id', validateActivityInput, activityController.updateActivity);
+router.put('/:id', upload, validateActivityInput, activityController.updateActivity);
 
 module.exports = router;

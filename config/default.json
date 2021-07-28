@@ -2,6 +2,6 @@
   "salt": 10,
   "configToken": {
     "SEED": "password",
-    "expiration": "1h"
-  } 
+    "expiration": "1d"
+  }
 }

@@ -4,7 +4,7 @@ const categoryController = require('./../controllers/category.controller');
 // user role validator
 const { checkToken, isAdmin } = require('../middlewares/auth');
 
-// validates name, phone and email
+// validates name
 const { validateCategory } = require('./../utils/validate');
 
 const router = express.Router();

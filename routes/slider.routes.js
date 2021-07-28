@@ -8,6 +8,6 @@ const upload = require('../middlewares/upload');
 const router = express.Router();
 
 router.get('/', sliderController.getSlides);
-router.put('/', upload, sliderController.updateSliders);
+router.put('/:id', upload, sliderController.updateSlides);
 
 module.exports = router;

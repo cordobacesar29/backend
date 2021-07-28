@@ -15,7 +15,8 @@ router.post(
   userController.loginAfterRegister
 );
 router.post('/auth/login', validateLoginInput, userController.login);
-router.get('/auth/me', checkToken, userController.userData);
+router.get('/auth/me', checkToken, userController.getMyProfile);
+router.get('/:id', checkToken, userController.getUserById);
 
 router.get('/', [checkToken, isAdmin], userController.getUsers);
 router.delete('/users/:id', isAdmin, userController.deleteUser);

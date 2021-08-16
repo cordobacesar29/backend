@@ -15,14 +15,11 @@ module.exports = {
       image: {
         type: Sequelize.STRING,
       },
-      phone: {
-        type: Sequelize.INTEGER,
-      },
-      address: {
+      information: {
         type: Sequelize.STRING,
       },
-      welcomeText: {
-        type: Sequelize.STRING(1000),
+      detail: {
+        type: Sequelize.STRING,
       },
       deletedAt: {
         type: Sequelize.DATE,

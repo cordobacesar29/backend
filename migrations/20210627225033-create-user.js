@@ -20,17 +20,6 @@ module.exports = {
 			password: {
 				type: Sequelize.STRING,
 			},
-			password: {
-				type: Sequelize.STRING,
-			},
-			image: {
-				type: Sequelize.STRING,
-			},
-			organizationId: {
-				type: Sequelize.INTEGER,
-				onUpdate: 'CASCADE',
-				onDelete: 'SET NULL',
-			},
 			roleId: {
 				type: Sequelize.INTEGER,
 				references: {
@@ -39,6 +28,9 @@ module.exports = {
 				},
 				onUpdate: 'CASCADE',
 				onDelete: 'SET NULL',
+			},
+			image: {
+				type: Sequelize.STRING,
 			},
 			deletedAt: {
 				type: Sequelize.DATE,

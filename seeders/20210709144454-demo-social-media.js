@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert('SocialMedia', [{
-      facebook: 'facebook',
+      web: 'web',
       linkedin: 'linkedin',
       instagram: 'instagram',
       organizationId: 1,

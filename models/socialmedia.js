@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   SocialMedia.init({
-    facebook: DataTypes.STRING,
+    web: DataTypes.STRING,
     linkedin: DataTypes.STRING,
     instagram: DataTypes.STRING,
     organizationId: DataTypes.INTEGER

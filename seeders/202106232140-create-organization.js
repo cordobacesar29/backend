@@ -6,12 +6,18 @@ module.exports = {
       'Organizations',
       [
         {
-          name: 'Somos Más',
-          image: 'https://i.imgur.com/g4v0EYR.png',
-          phone: 1160112988,
-          address: 'Buenos Aires, Argentina',
-          welcomeText:
-            'Desde 1997 en Somos Más trabajamos con los chicos y chicas, mamás y papás, abuelos y vecinos del barrio La Cava generando procesos de crecimiento y de inserción social. Uniendo las manos de todas las familias, las que viven en el barrio y las que viven fuera de él, es que podemos pensar, crear y garantizar estos procesos. Somos una asociación civil sin fines de lucro que se creó en 1997 con la intención de dar alimento a las familias del barrio. Con el tiempo fuimos involucrándonos con la comunidad y agrandando y mejorando nuestra capacidad de trabajo. Hoy somos un centro comunitario que acompaña a más de 700 personas a través de las áreas de: Educación, deportes, primera infancia, salud, alimentación y trabajo social.',
+          name: 'Coderhood',
+          image: 'https://imgur.com/cFSehga.png',
+          information: "coderhood es una plataforma que promueve el aprendizaje autodidacta",
+          detail: 'aqui van los detalles',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: 'Alkemy',
+          image: 'https://imgur.com/rQkLEIg.png',
+          information: "calkemy es una asceleración de no sé que pingo, pero lo hice",
+          detail: 'aqui van  otros detalles mas los detalles',
           createdAt: new Date(),
           updatedAt: new Date(),
         },

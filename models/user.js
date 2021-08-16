@@ -9,10 +9,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       User.belongsTo(models.Role, { as: 'role', foreignKey: 'roleId' });
-      User.belongsTo(models.Organization, {
-        as: 'organization',
-        foreignKey: 'organizationId',
-      });
     }
   }
   User.init(
@@ -20,10 +16,9 @@ module.exports = (sequelize, DataTypes) => {
       firstName: DataTypes.STRING,
       lastName: DataTypes.STRING,
       email: DataTypes.STRING,
-      image: DataTypes.STRING,
       password: DataTypes.STRING,
-      organizationId: DataTypes.INTEGER,
       roleId: { type: DataTypes.INTEGER, defaultValue: 2 },
+      image: DataTypes.STRING,
       deletedAt: DataTypes.DATE,
     },
     {

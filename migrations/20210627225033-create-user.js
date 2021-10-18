@@ -25,7 +25,9 @@ module.exports = {
 				references: {
 					model: 'Roles',
 					key: 'id',
-				}
+				},
+				onUpdate: 'CASCADE',
+				onDelete: 'SET NULL',
 			},
 			image: {
 				type: Sequelize.STRING,

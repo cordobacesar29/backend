@@ -1,0 +1,239 @@
+{
+	"info": {
+		"_postman_id": "48840328-8075-4013-892b-7a4266c0d613",
+		"name": "portfolio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "post user register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"ema\",\r\n    \"lastName\": \"romano\",\r\n    \"email\": \"ema@email.com\",\r\n    \"password\": \"1234567\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/users/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post user login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"ema@email.com\",\r\n    \"password\": \"1234567\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/users/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get users with authorization headers params",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjo2LCJyb2xlIjoxfSwiaWF0IjoxNjI4NTM4OTkwLCJleHAiOjE2Mjg2MjUzOTB9.kfjyBStEbeS1SK4xet0uXJsfv1a0-nELVINsmsxuXxA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get one user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjo2LCJyb2xlIjoxfSwiaWF0IjoxNjI5MTMyMzYwLCJleHAiOjE2MjkyMTg3NjB9.HpXuzLHEbsrM2c1NGD8dfNrNlKoMsFEebKqkCVzx8K4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/users/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get organizations",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjo2LCJyb2xlIjoxfSwiaWF0IjoxNjI4NTM4OTkwLCJleHAiOjE2Mjg2MjUzOTB9.kfjyBStEbeS1SK4xet0uXJsfv1a0-nELVINsmsxuXxA",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/organizations/1/public/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"organizations",
+						"1",
+						"public",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get proyects",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjo2LCJyb2xlIjoxfSwiaWF0IjoxNjI4NTM4OTkwLCJleHAiOjE2Mjg2MjUzOTB9.kfjyBStEbeS1SK4xet0uXJsfv1a0-nELVINsmsxuXxA",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/proyects/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"proyects",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post proyect",
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjo2LCJyb2xlIjoxfSwiaWF0IjoxNjI5MTMyMzYwLCJleHAiOjE2MjkyMTg3NjB9.HpXuzLHEbsrM2c1NGD8dfNrNlKoMsFEebKqkCVzx8K4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"veterinariApp\",\r\n    \"description\": \"Demo veterinaria\",\r\n    \"repositore\": \"https://github.com/cordobacesar29/VeterinariApp\",\r\n    \"link\": \"https://github.com/\",\r\n    \"image\": \"https://imgur.com/P7ecLgG.png\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/proyects/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"proyects",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

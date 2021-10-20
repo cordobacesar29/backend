@@ -5,7 +5,7 @@ const proyectRouter = require('./proyect.routes');
 const createRoutes = app => {
   app.use('/api/users', usersRouter);
   app.use('/api/organizations', organizationsRouter);
-  app.use('/api/proyects/', proyectRouter);
+  app.use('/api/proyects', proyectRouter);
 };
 
 module.exports = createRoutes;

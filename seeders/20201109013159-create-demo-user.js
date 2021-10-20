@@ -12,9 +12,9 @@ module.exports = {
           lastName: 'Demo',
           email: 'camila@admin.com',
           password: generatehast('1234567'),
-          roleId: 1,
           image:
           'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+          roleId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
